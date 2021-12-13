@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { View, Text, StyleSheet, Button,Alert,Modal, Pressable } from "react-native"
 import SquareBlock from "../components/SquareBlock"
 import Player1Win from "../logic/player1Win"
@@ -6,82 +6,56 @@ import numberOfMoves from "../logic/numberOfMoves"
 
 import {BACKGROUNG_COLOR, BLOCK_COLOR, STICK_COLOR} from "../colors/GameColor"
 import WinModel from "../components/WinModel"
+import ScoreComp from "../components/ScoreComp"
 
 
 const GameScreen = () => {
     let initialState = new Array(9)
     let DUMMY = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-
+    
+    const [score, setScore] = useState({p1:0, p2:0, Draw:0});
     const [state, setState] = useState(initialState.fill(0))
     const [player1, setPlayer1] = useState([0,0,0,0,0,0,0,0,0]);
     const [player2, setPlayer2] = useState([0,0,0,0,0,0,0,0,0]);
     const [playerTurn, setPlayerTurn] = useState("p1");
-    const [modalVisible, setModalVisible] = useState(false);
-    const [winBlock, setWinBlock] = useState([])
+    const [modalVisible, setModalVisible] = useState(false)
     console.log("rendered>>>>>>>>>>>>>>>.")
-    function resetState(){
+    const resetState = useCallback(()=>{
         setModalVisible(true)
         setPlayer1([0,0,0,0,0,0,0,0,0])
         setState(initialState.fill(0))
         
         setPlayer2([0,0,0,0,0,0,0,0,0])
-        setPlayerTurn("p2")
-        
-    }
-
+        setPlayerTurn("p2")  
+    }, [])
+    
     let isP1Winning = Player1Win(player1);
     let isP2Winning = Player1Win(player2);
     let moves = numberOfMoves(state);
+    useEffect(()=>{
+        if(isP1Winning){
+ 
+            resetState();
+            console.warn("player 1 won");
+            setScore(data=>{
+                return {...data, p1:data.p1+1}
+            })
+        }else if(isP2Winning){
+
+            console.warn("player 2 won")
+            resetState();
+            setScore(data=>{
+                return {...data, p2:data.p2+1}
+            })
     
-    if(isP1Winning){
-        // Alert.alert(
-        //             "Player1 WON",
-        //             "My Alert Msg",
-        //             [
-        //               {
-        //                 text: "Cancel",
-        //                 onPress: () => resetState(),
-        //                 style: "cancel"
-        //               },
-        //               { text: "OK", onPress: () => console.log("OK Pressed") }
-        //             ]
-        //           );
-        resetState();
-        console.warn("player 1 won")
-    }else if(isP2Winning){
-        // Alert.alert(
-        //             "Player2 WON",
-        //             "My Alert Msg",
-        //             [
-        //               {
-        //                 text: "Cancel",
-        //                 onPress: () => resetState(),
-        //                 style: "cancel"
-        //               },
-        //               { text: "OK", onPress: () => console.log("OK Pressed") }
-        //             ]
-        //           );
-        // setModalVisible(true)
-        console.warn("player 1 won")
-        resetState();
-
-    }else if(moves===9){
-      console.warn("Game Draw")
-
-      // Alert.alert(
-      //     "The Game is Draw",
-      //     "My Alert Msg",
-      //     [
-      //       {
-      //         text: "Cancel",
-      //         onPress: () => resetState(),
-      //         style: "cancel"
-      //       },
-      //       { text: "OK", onPress: () => console.log("OK Pressed") }
-      //     ]
-      //   );
-  }
+        }else if(moves===9){
+          console.warn("Game Draw")
+          setScore(data=>{
+            return {...data, Draw:data.Draw+1}
+        })
+      }
+    }, [isP1Winning, isP2Winning, moves])
+    
     
 
 
@@ -95,8 +69,6 @@ const GameScreen = () => {
             let newState = state;
             newState[blockIndex-1] = "p1"
             setState(newState)
-
-
         }
         else if(playerName==="p2"){
             let newPlayer2 = player2;
@@ -132,16 +104,10 @@ const GameScreen = () => {
                             player2={player2}
                             handlePlayerTurn={handlePlayerTurn}
                             currentTurn={playerTurn}
-                            winBlock={winBlock}
                              />
             })}
         </View>
-        <Button onPress={()=> {
-            console.log("Player 1",player1)
-            console.log("Player 2",player2)
-            console.log("state",state)
-            setModalVisible(true)
-    }} title="Click me" />
+        <ScoreComp score={score}/>
     </View>
 }
 
@@ -166,7 +132,6 @@ const styles = StyleSheet.create({
         fontSize:30,
         color:STICK_COLOR
     },
-    // These are extra
     
 })
 

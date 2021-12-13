@@ -1,10 +1,10 @@
-import GameScreen from "./screens/GameScreen"
+import GameScreen1 from "./screens/GameScreen1"
 import React from 'react'
 
 
 const App = () =>{
 
 
-  return <GameScreen/>
+  return <GameScreen1/>
 }
-export default GameScreen;
+export default App;

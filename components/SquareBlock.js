@@ -22,6 +22,7 @@ const SquareBlock = ({index, state,handlePlayerTurn,currentTurn})=>{
     let renderSign = null;
     if(stateValue==="p1"){
         renderSign=<InnerCircle/>
+
     }
     if(stateValue === "p2"){
         renderSign=<CrossSign/>
