@@ -1,11 +1,18 @@
 import React, { useEffect, useRef } from 'react'
-import {Animated, StyleSheet, Text, View} from "react-native"
+import {Animated, StyleSheet, Text, View,Easing} from "react-native"
 import { BLOCK_COLOR } from '../colors/GameColor'
 
 
 const CrossSign = ({showAnimation}) =>{
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
+    Animated.timing(fadeAnim, {
+        toValue: 100,
+        duration: 2000,
+        easing: Easing.linear,
+        // useNativeDriver:true
+      }).start();
+   
     // useEffect(()=>{
     //     if(!showAnimation) {
     //         Animated.loop(
@@ -29,24 +36,26 @@ const CrossSign = ({showAnimation}) =>{
     //             }
     //           ).start()
     //     }
-    //     // for(let i =0 ; i<10 ; i++){
-    //     //     Animated.timing(fadeAnim, {
-    //     //         toValue: 1,
-    //     //         duration: 500,
-    //     //         useNativeDriver: true,
-    //     //     }).start();
-    //     //     // Animated.timing(fadeAnim, {
-    //     //     //     toValue: 0,
-    //     //     //     duration: 5000,
-    //     //     //     useNativeDriver: true,
-    //     //     // }).start();
-    //     // }
+        // for(let i =0 ; i<10 ; i++){
+        //     Animated.timing(fadeAnim, {
+        //         toValue: 1,
+        //         duration: 500,
+        //         useNativeDriver: true,
+        //     }).start();
+        //     // Animated.timing(fadeAnim, {
+        //     //     toValue: 0,
+        //     //     duration: 5000,
+        //     //     useNativeDriver: true,
+        //     // }).start();
+        // }
         
     // }, [showAnimation])
 
     return (
     <View style={styles.mainContainer}>
-        <Animated.View style={[styles.aniContainer, {width:fadeAnim}]}>
+        <Animated.View style={[styles.aniContainer, {width:fadeAnim.interpolate({
+            inputRange:[0,100], outputRange:["0%", "100%"]
+        })}]}>
             <Text>Hi tere</Text>
         </Animated.View>
         <View style={[styles.bar, {transform:[{rotateX:"45deg"}, {rotateZ:"45deg"}]}]}>

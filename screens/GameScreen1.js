@@ -19,6 +19,9 @@ const GameScreen = () => {
     const [player2, setPlayer2] = useState([0,0,0,0,0,0,0,0,0]);
     const [playerTurn, setPlayerTurn] = useState("p1");
     const [modalVisible, setModalVisible] = useState(false)
+    const [winBlock , setWinBlock] = useState([])
+    
+    // const winBlock = [0,1,2,3,4,5]
     console.log("rendered>>>>>>>>>>>>>>>.")
     const resetState = useCallback(()=>{
         setModalVisible(true)
@@ -34,15 +37,14 @@ const GameScreen = () => {
     let moves = numberOfMoves(state);
     useEffect(()=>{
         if(isP1Winning){
- 
             resetState();
-            console.warn("player 1 won");
+            console.warn("p1, ", isP1Winning);
             setScore(data=>{
                 return {...data, p1:data.p1+1}
             })
         }else if(isP2Winning){
 
-            console.warn("player 2 won")
+            console.warn("player 2 won", isP2Winning)
             resetState();
             setScore(data=>{
                 return {...data, p2:data.p2+1}
@@ -50,6 +52,7 @@ const GameScreen = () => {
     
         }else if(moves===9){
           console.warn("Game Draw")
+          resetState();
           setScore(data=>{
             return {...data, Draw:data.Draw+1}
         })
@@ -69,6 +72,7 @@ const GameScreen = () => {
             let newState = state;
             newState[blockIndex-1] = "p1"
             setState(newState)
+
         }
         else if(playerName==="p2"){
             let newPlayer2 = player2;
@@ -104,10 +108,12 @@ const GameScreen = () => {
                             player2={player2}
                             handlePlayerTurn={handlePlayerTurn}
                             currentTurn={playerTurn}
+                            winBlock={winBlock}
                              />
             })}
         </View>
-        <ScoreComp score={score}/>
+        {/* <ScoreComp score={score}/> */}
+        <Button onPress={()=> setWinBlock([0,1,2])} title="Click me"/>
     </View>
 }
 
