@@ -12,9 +12,9 @@ const SquareBlock = ({index, state,handlePlayerTurn,currentTurn, winBlock})=>{
     const boxHeight = width*30/100
     let borderStyle={}
     let showAnimation = false
-    console.log("data",showAnimation)
+    // console.log("data",showAnimation)
     if(winBlock.includes(index)){
-        console.log("true")
+        // console.log("true")
         showAnimation=true
     }
     
@@ -48,7 +48,7 @@ const SquareBlock = ({index, state,handlePlayerTurn,currentTurn, winBlock})=>{
 
     }
     function handleMove(){
-        console.log(currentTurn)
+        // console.log(currentTurn)
         handlePlayerTurn(index, currentTurn)
     }
     

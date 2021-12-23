@@ -1,19 +1,28 @@
 import React from "react"
 import { Pressable, StyleSheet, Text, View } from "react-native"
+import ScoreComp from "./ScoreComp";
 
-const WinModel = ({setModalVisible, modalVisible}) =>{
-
-    return <View style={styles.centeredView}>
-    <View style={styles.modalView}>
-      <Text style={styles.modalText}>Hello World!</Text>
-      <Pressable
-        style={[styles.button, styles.buttonClose]}
-        onPress={() => setModalVisible(!modalVisible)}
-      >
-        <Text style={styles.textStyle}>Hide Modal</Text>
-      </Pressable>
+const WinModel = ({setShowModel, showModel, score, resetState}) =>{
+  let Textt = "The Game is Draw";
+  if(showModel==="p1") Textt = "Player 1 Won"
+  if(showModel==="p2") Textt = "Player 2 Won"
+    return(
+    <View style={styles.centeredView}>
+      <View style={styles.modalView}>
+        <Text style={styles.modalText}>{Textt}</Text>
+        <ScoreComp score={score} />
+        <Pressable
+          style={[styles.button, styles.buttonClose]}
+          onPress={() => {
+            resetState()
+            setShowModel(false)
+          }}
+        >
+          <Text style={styles.textStyle}>Continue</Text>
+        </Pressable>
+      </View>
     </View>
-  </View>
+  )
 }
 
 
@@ -22,15 +31,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 522
+        marginTop: 522,
       },
       modalView: {
-        margin: 20,
-        width:"70%",
+        margin: 10,
+        width:"90%",
         height: 200,
-        backgroundColor: "white",
+        backgroundColor: "black",
         borderRadius: 20,
-        padding: 35,
+        padding: 15,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
@@ -39,18 +48,21 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5
+        elevation: 5,
+        justifyContent:'space-evenly'
       },
       button: {
         borderRadius: 20,
         padding: 10,
-        elevation: 2
+        backgroundColor:"black",
+        elevation: 2,
+        paddingHorizontal:12
       },
       buttonOpen: {
         backgroundColor: "#F194FF",
       },
       buttonClose: {
-        backgroundColor: "#2196F3",
+        backgroundColor: "red",
       },
       textStyle: {
         color: "white",
@@ -59,7 +71,8 @@ const styles = StyleSheet.create({
       },
       modalText: {
         marginBottom: 15,
-        textAlign: "center"
+        textAlign: "center",
+        color:'red'
       }
 })
 export default WinModel

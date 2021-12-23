@@ -3,16 +3,9 @@ import {Animated, StyleSheet, Text, View,Easing} from "react-native"
 import { BLOCK_COLOR } from '../colors/GameColor'
 
 
-const CrossSign = ({showAnimation}) =>{
+const CrossSign = () =>{
 
-    const fadeAnim = useRef(new Animated.Value(0)).current;
-    Animated.timing(fadeAnim, {
-        toValue: 100,
-        duration: 2000,
-        easing: Easing.linear,
-        // useNativeDriver:true
-      }).start();
-   
+    
     // useEffect(()=>{
     //     if(!showAnimation) {
     //         Animated.loop(
@@ -53,10 +46,8 @@ const CrossSign = ({showAnimation}) =>{
 
     return (
     <View style={styles.mainContainer}>
-        <Animated.View style={[styles.aniContainer, {width:fadeAnim.interpolate({
-            inputRange:[0,100], outputRange:["0%", "100%"]
-        })}]}>
-            <Text>Hi tere</Text>
+        <Animated.View style={styles.aniContainer}>
+            <Text>.</Text>
         </Animated.View>
         <View style={[styles.bar, {transform:[{rotateX:"45deg"}, {rotateZ:"45deg"}]}]}>
             <Text>.</Text>
@@ -89,7 +80,6 @@ const styles = StyleSheet.create({
         zIndex:1
     }, aniContainer:{
         position:"absolute",
-        backgroundColor: "red",
         width:"100%",
         height:"100%"
     }

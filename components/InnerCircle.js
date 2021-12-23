@@ -3,11 +3,12 @@ import { StyleSheet, Text,View } from "react-native"
 
 const InnerCircle = () =>{
 
-    return <View style={styles.mainContainer}>
+    return( 
+        <View style={styles.mainContainer}>
                 <View style={styles.innerContainer}>
                     <Text>.</Text>
                 </View>
-    </View>
+        </View>)
 }
 
 const styles = StyleSheet.create({

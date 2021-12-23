@@ -4,7 +4,6 @@ import { StyleSheet,Text,View } from "react-native"
 const ScoreComp = ({score}) =>{
 
     return<View style={styles.mainContainer} >
-        <Text>Score Board</Text>
         <View style={styles.container}>
             <View>
                 <Text style={styles.textColor}>X's Win</Text>
