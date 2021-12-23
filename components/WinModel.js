@@ -1,11 +1,12 @@
 import React from "react"
 import { Pressable, StyleSheet, Text, View } from "react-native"
+import { BACKGROUNG_COLOR, WIN_MODEL_BUTTON } from "../colors/GameColor";
 import ScoreComp from "./ScoreComp";
 
 const WinModel = ({setShowModel, showModel, score, resetState}) =>{
   let Textt = "The Game is Draw";
-  if(showModel==="p1") Textt = "Player 1 Won"
-  if(showModel==="p2") Textt = "Player 2 Won"
+  if(showModel==="p1") Textt = "Player 'O' Won"
+  if(showModel==="p2") Textt = "Player 'X' Won"
     return(
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
@@ -62,7 +63,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#F194FF",
       },
       buttonClose: {
-        backgroundColor: "red",
+        backgroundColor: WIN_MODEL_BUTTON,
+        paddingHorizontal: 30
       },
       textStyle: {
         color: "white",
@@ -72,7 +74,9 @@ const styles = StyleSheet.create({
       modalText: {
         marginBottom: 15,
         textAlign: "center",
-        color:'red'
+        color:BACKGROUNG_COLOR,
+        fontWeight: "700",
+        fontSize: 25
       }
 })
 export default WinModel

@@ -1,5 +1,6 @@
 import React from "react"
 import { StyleSheet, Text,View } from "react-native"
+import { OVAL_COLOR } from "../colors/GameColor"
 
 const InnerCircle = () =>{
 
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
         width:"80%",
         borderRadius:900,
         borderWidth:15,
-        borderColor:"red"
+        borderColor:OVAL_COLOR
 
     },
     innerContainer:{

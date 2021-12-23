@@ -1,48 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 import {Animated, StyleSheet, Text, View,Easing} from "react-native"
-import { BLOCK_COLOR } from '../colors/GameColor'
+import { BLOCK_COLOR, CROSS_COLOR } from '../colors/GameColor'
 
 
 const CrossSign = () =>{
-
-    
-    // useEffect(()=>{
-    //     if(!showAnimation) {
-    //         Animated.loop(
-    //             Animated.sequence([
-    //               Animated.timing(fadeAnim, {
-    //                 toValue: 400,
-    //                 duration: 500,
-    //                 delay: 500,
-    //                 useNativeDriver:true
-    //               }),
-    //               Animated.timing(fadeAnim, {
-    //                 toValue: 0,
-    //                 duration: 500,
-    //                 useNativeDriver:true
-    //               }),
-                  
-    //             ]),
-    //             {
-    //               iterations: 4,
-                  
-    //             }
-    //           ).start()
-    //     }
-        // for(let i =0 ; i<10 ; i++){
-        //     Animated.timing(fadeAnim, {
-        //         toValue: 1,
-        //         duration: 500,
-        //         useNativeDriver: true,
-        //     }).start();
-        //     // Animated.timing(fadeAnim, {
-        //     //     toValue: 0,
-        //     //     duration: 5000,
-        //     //     useNativeDriver: true,
-        //     // }).start();
-        // }
-        
-    // }, [showAnimation])
 
     return (
     <View style={styles.mainContainer}>
@@ -55,7 +16,8 @@ const CrossSign = () =>{
         <View style={[styles.bar2, {transform:[{rotateX: "45deg"}, {rotateZ:"-45deg"}]}]}>
             <Text>.</Text>
         </View>
-    </View>)
+    </View>
+    )
 }
 
 
@@ -66,14 +28,13 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     bar:{
-        backgroundColor:BLOCK_COLOR,
+        backgroundColor:CROSS_COLOR,
         height:20,
         width:"100%",
         zIndex:12
     },
     bar2:{
-        backgroundColor:BLOCK_COLOR,
-        // backgroundColor:"#EC255A",
+        backgroundColor:CROSS_COLOR,
         height:20,
         width:"100%",
         position:"absolute",

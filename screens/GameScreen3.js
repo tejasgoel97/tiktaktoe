@@ -7,6 +7,7 @@ import Player1Win from "../logic/player1Win";
 import numberOfMoves from "../logic/numberOfMoves";
 import WinIndicatorStick from "../components/WinIndicatorStick";
 import WinModel from "../components/WinModel";
+import TurnComp from "../components/TurnComp";
 
 
 const GameScreen = ({setCurrentScreen}) =>{
@@ -96,7 +97,7 @@ const GameScreen = ({setCurrentScreen}) =>{
                 // setState([0,0,0,0,0,0,0,0,0])
                 }, 2000);
             setShowModel('DRAW')
-
+            
             setScore(data=>{
                 return {...data, Draw:data.Draw+1}
             })
@@ -132,7 +133,7 @@ const GameScreen = ({setCurrentScreen}) =>{
                     resetState={()=> setState([0,0,0,0,0,0,0,0,0])}
                     />
             </Modal>
-            <Text style={styles.turnText}>{`Turn - ${playerTurn==="p1" ? "Player 1 (O)" : "Player 2 (X)"}`}</Text>
+            <TurnComp playerTurn={playerTurn}/>
             <View style={styles.innerContainer}>
                 {showWinStick &&<View style={styles.WinStickContainer}>
                     <WinIndicatorStick showWinStick={showWinStick}/>
@@ -173,10 +174,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: 'center',
     },
-    turnText:{
-        fontSize:30,
-        color:STICK_COLOR
-    },
+   
     WinStickContainer:{
         position:"absolute",
         height:"100%",

@@ -1,5 +1,6 @@
 import React from "react"
 import { StyleSheet,Text,View } from "react-native"
+import { SCORE_COLOR } from "../colors/GameColor"
 
 const ScoreComp = ({score}) =>{
 
@@ -7,11 +8,11 @@ const ScoreComp = ({score}) =>{
         <View style={styles.container}>
             <View>
                 <Text style={styles.textColor}>X's Win</Text>
-                <Text style={styles.winText}>{score.p1}</Text>
+                <Text style={styles.winText}>{score.p2}</Text>
             </View>
             <View>
                 <Text style={styles.textColor}>O's Win</Text>
-                <Text style={styles.winText}>{score.p2}</Text>
+                <Text style={styles.winText}>{score.p1}</Text>
             </View>
             <View>
                 <Text style={styles.textColor}>Draws</Text>
@@ -24,22 +25,22 @@ const ScoreComp = ({score}) =>{
 
 const styles = StyleSheet.create({
     mainContainer:{
-        width: "100%",
-        
+        width: "90%",
     },
     container:{
         flexDirection:"row", 
         justifyContent:'space-around'
        },
     textColor:{
-        color:"yellow",
-        fontSize:20
+        color:SCORE_COLOR,
+        fontSize:20,
+        fontWeight: "500"
     },
     winText:{
         textAlign:"center",
-        color:"yellow",
-        fontSize:25
-
+        color:SCORE_COLOR,
+        fontSize:25,
+        fontWeight: "500"
     }
 })
 

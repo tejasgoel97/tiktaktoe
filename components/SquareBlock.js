@@ -3,7 +3,7 @@ import { View, Text, TextComponent, StyleSheet,useWindowDimensions, Pressable, I
 import InnerCircle from "./InnerCircle"
 import CrossSign from "./CrossSign"
 import CrossSignTest from "./CrossSignTest"
-import { BACKGROUNG_COLOR, BLOCK_COLOR } from "../colors/GameColor";
+import { BACKGROUNG_COLOR, BLOCK_COLOR, STICK_COLOR } from "../colors/GameColor";
 
 
 const SquareBlock = ({index, state,handlePlayerTurn,currentTurn, winBlock})=>{
@@ -17,15 +17,6 @@ const SquareBlock = ({index, state,handlePlayerTurn,currentTurn, winBlock})=>{
         // console.log("true")
         showAnimation=true
     }
-    
-    // if(stateValue==="p1"){
-    //     borderStyle={...borderStyle, backgroundColor:"red"}
-    //     img=require("../OO.png")
-    // }
-    // if(stateValue==="p2"){
-    //     borderStyle={...borderStyle, backgroundColor:"blue"}
-    //     img = require("../cross.png")
-    // }
     let renderSign = null;
     if(stateValue==="p1"){
         renderSign=<InnerCircle showAnimation={showAnimation}/>
@@ -35,13 +26,13 @@ const SquareBlock = ({index, state,handlePlayerTurn,currentTurn, winBlock})=>{
         renderSign=<CrossSignTest  showAnimation={showAnimation}/>
     }
     if(index%3 ){
-        borderStyle ={...borderStyle, borderRightColor:"yellow",borderRightWidth:7,}
+        borderStyle ={...borderStyle, borderColor:STICK_COLOR,borderRightWidth:7,}
     }else{
         borderStyle ={...borderStyle, borderRightColor:BACKGROUNG_COLOR,borderRightWidth:7,}
 
     }
     if(index<7){ 
-        borderStyle = {...borderStyle, borderBottomColor:"yellow",borderBottomWidth:7,}
+        borderStyle = {...borderStyle, borderBottomColor:STICK_COLOR,borderBottomWidth:7,}
     }
     else{
         borderStyle = {...borderStyle, borderBottomColor:BACKGROUNG_COLOR,borderBottomWidth:7,}
@@ -57,10 +48,6 @@ const SquareBlock = ({index, state,handlePlayerTurn,currentTurn, winBlock})=>{
             onPress={handleMove}
             disabled={stateValue}
             >
-                {/* <ImageBackground source={img} resizeMode="cover" style={styles.imageContainer}>
-                    <Text>{index}</Text>
-                </ImageBackground> */}
-                {/* <InnerCircle /> */}
                 {renderSign}
     </Pressable>
 }

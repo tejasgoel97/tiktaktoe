@@ -1,5 +1,6 @@
 import { Animated, Easing, StyleSheet, Text, View } from 'react-native'
 import React, { useRef } from 'react' 
+import { WIN_STICK } from '../colors/GameColor';
 const WinIndicatorStick = ({showWinStick}) =>{
     console.log("showIn",showWinStick)
     const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -43,21 +44,21 @@ const WinIndicatorStick = ({showWinStick}) =>{
                 style={[styles.verticalLine, {height:fadeAnim.interpolate({inputRange:[0,100], outputRange:["0%", `${showWinStick==4? "100%": "0%"}`]})}]}
                 >
                     <Text>
-                        Hi there
+                        .
                     </Text>
                 </Animated.View>
                 <Animated.View 
                 style={[styles.verticalLine, {height:fadeAnim.interpolate({inputRange:[0,100], outputRange:["0%", `${showWinStick==5? "100%": "0%"}`]})}]}
                 >
                     <Text>
-                        Hi there
+                        .
                     </Text>
                 </Animated.View>
                 <Animated.View 
                 style={[styles.verticalLine, {height:fadeAnim.interpolate({inputRange:[0,100], outputRange:["0%", `${showWinStick==6? "100%": "0%"}`]})}]}
                 >
                     <Text>
-                        Hi there
+                        .
                     </Text>
                 </Animated.View>
             </View>)
@@ -69,7 +70,7 @@ const WinIndicatorStick = ({showWinStick}) =>{
             inputRange:[0,100], outputRange:["0%", "130%"]
             })}]}>
                 <Text>
-                    Hi there
+                    .
                 </Text>
             </Animated.View>
         </View>
@@ -82,7 +83,7 @@ const WinIndicatorStick = ({showWinStick}) =>{
             inputRange:[0,100], outputRange:["0%", "130%"]
             })}]}>
                 <Text>
-                    Hi there
+                    .
                 </Text>
             </Animated.View>
         </View>
@@ -102,24 +103,24 @@ const styles = StyleSheet.create({
     diagonal1Contianer:{
         width: "10%",
         height: 10,
-        backgroundColor:'yellow',
+        backgroundColor:WIN_STICK,
         transform:[{rotateX:"-25deg"}, {rotateZ:"-50deg"}]
     },
     diagonal2Contianer:{
         width: "10%",
         height: 10,
-        backgroundColor:'yellow',
+        backgroundColor:WIN_STICK,
         transform:[{rotateX:"25deg"}, {rotateZ:"50deg"}]
     },
     horizontalLine:{
         width: "90%",
         height: 10,
-        backgroundColor:'yellow',
+        backgroundColor:WIN_STICK,
     },
     verticalLine:{
         width:10,
         height: 10,
-        backgroundColor:'yellow',
+        backgroundColor:WIN_STICK,
     },
 
 })
