@@ -3,27 +3,26 @@ import { View, Text, TextComponent, StyleSheet,useWindowDimensions, Pressable, I
 import InnerCircle from "./InnerCircle"
 import CrossSign from "./CrossSign"
 import CrossSignTest from "./CrossSignTest"
+import CrossIcon from "./CrossIcon"
 import { BACKGROUNG_COLOR, BLOCK_COLOR, STICK_COLOR } from "../colors/GameColor";
+import CircleIcon from "./CircleIcon";
 
 
-const SquareBlock = ({index, state,handlePlayerTurn,currentTurn, winBlock})=>{
+const SquareBlock = ({index, state,handlePlayerTurn,currentTurn})=>{
     let stateValue = state[index-1]
     const {height,width} = useWindowDimensions()
     const boxHeight = width*30/100
     let borderStyle={}
-    let showAnimation = false
     // console.log("data",showAnimation)
-    if(winBlock.includes(index)){
-        // console.log("true")
-        showAnimation=true
-    }
+   
     let renderSign = null;
     if(stateValue==="p1"){
-        renderSign=<InnerCircle showAnimation={showAnimation}/>
+        // renderSign=<InnerCircle />
+        renderSign=<CircleIcon />
 
     }
     if(stateValue === "p2"){
-        renderSign=<CrossSignTest  showAnimation={showAnimation}/>
+        renderSign=<CrossIcon />
     }
     if(index%3 ){
         borderStyle ={...borderStyle, borderColor:STICK_COLOR,borderRightWidth:7,}

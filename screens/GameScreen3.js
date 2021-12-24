@@ -146,13 +146,12 @@ const GameScreen = ({setCurrentScreen}) =>{
                                 player1={player1} 
                                 player2={player2}
                                 handlePlayerTurn={handlePlayerTurn}
-                                currentTurn={playerTurn}
-                                winBlock={[0,1,2,3,4]}
+                                currentTurn={playerTurn}        
                                 />
                 })}
             </View>
             <ScoreComp score={score}/>
-            <Button onPress={()=> setWinBlock([0,1,2])} title="Click me"/>
+            {/* <Button onPress={()=> null} title="Click me"/> */}
         </View>
         )
 }

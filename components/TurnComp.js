@@ -1,20 +1,30 @@
 import { StyleSheet, Text, View } from 'react-native'
+import IconFontAwsome from 'react-native-vector-icons/FontAwesome';
+import IconEntypo from "react-native-vector-icons/Entypo"
 import React from 'react' 
-import { CROSS_COLOR, OVAL_COLOR, STICK_COLOR } from '../colors/GameColor'
+import { CROSS_COLOR, OVAL_COLOR, SCORE_COLOR, STICK_COLOR } from '../colors/GameColor'
+
+
+
 const TurnComp = ({playerTurn}) =>{
-    if(playerTurn==="p1"){
-        return(<View style={styles.mainContainer}>
-            <Text style={{color:STICK_COLOR, fontSize: 30, }}>
-                Turn Player - 
-            </Text>
-            <Text style={{color: OVAL_COLOR, fontSize: 30, fontWeight:"900"}}>O</Text>
-        </View>)
-    }
+    let comp = <IconFontAwsome name="circle-o" size={30} color={OVAL_COLOR}  />
+    if(playerTurn==="p2")
+        comp=<IconEntypo name="cross" size={30} color={CROSS_COLOR}  />
+
+    // if(playerTurn==="p1"){
+    //     return(<View style={styles.mainContainer}>
+    //         <Text style={{color:SCORE_COLOR, fontSize: 25, }}>
+    //             Turn Player - 
+    //         </Text>
+            
+    //     </View>)
+    // }
     return(<View style={styles.mainContainer}>
-        <Text style={{color:STICK_COLOR, fontSize: 30, }}>
+        <Text style={{color:SCORE_COLOR, fontSize: 25, }}>
             Turn Player - 
         </Text>
-        <Text style={{color: CROSS_COLOR, fontSize: 30, fontWeight:"900"}}>X</Text>
+        {comp}
+        {/* <IconEntypo name="cross" size={30} color={CROSS_COLOR}  /> */}
     </View>)
     
 } 
@@ -23,7 +33,10 @@ const styles = StyleSheet.create({
        flexDirection:'row',
        height: 40,
        width: "50%",
-       justifyContent:"space-around"
+       justifyContent:"space-around",
+       alignItems:'center',
+       backgroundColor:'green',
+       borderRadius:10
        
     },
     signContainer:{

@@ -1,16 +1,32 @@
 import React from "react"
 import { Pressable, StyleSheet, Text, View } from "react-native"
-import { BACKGROUNG_COLOR, WIN_MODEL_BUTTON } from "../colors/GameColor";
+import { BACKGROUNG_COLOR, CROSS_COLOR, OVAL_COLOR, STICK_COLOR, WIN_MODEL_BUTTON } from "../colors/GameColor";
+import IconEntypo from 'react-native-vector-icons/Entypo';
+import IconFontAwsome from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import ScoreComp from "./ScoreComp";
+import CrossIcon from "./CrossIcon"
 
 const WinModel = ({setShowModel, showModel, score, resetState}) =>{
   let Textt = "The Game is Draw";
   if(showModel==="p1") Textt = "Player 'O' Won"
   if(showModel==="p2") Textt = "Player 'X' Won"
+  let comp = <Text>The Game is Draw</Text>
+  if(showModel==="p2") comp =<IconEntypo name="cross" size={30} color={CROSS_COLOR} style={{}} />
+
+  if(showModel==="p1") comp =  <IconFontAwsome name="circle-o" size={30} color={OVAL_COLOR} />;
     return(
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
-        <Text style={styles.modalText}>{Textt}</Text>
+        <View style={styles.trpohyAndWinContainer}>
+          <MaterialIcons name="emoji-events" color={WIN_MODEL_BUTTON} size={22}/>
+          <View style={styles.playerWon}>
+            {comp}
+            <Text style={styles.modalText}> WON</Text>
+          </View>
+          <MaterialIcons name="emoji-events" color={WIN_MODEL_BUTTON} size={22}/>
+
+        </View>
         <ScoreComp score={score} />
         <Pressable
           style={[styles.button, styles.buttonClose]}
@@ -72,11 +88,23 @@ const styles = StyleSheet.create({
         textAlign: "center"
       },
       modalText: {
-        marginBottom: 15,
+        // marginBottom: 15,
         textAlign: "center",
-        color:BACKGROUNG_COLOR,
+        color:WIN_MODEL_BUTTON,
         fontWeight: "700",
-        fontSize: 25
+        fontSize: 20,
+        
+      },
+      playerWon:{
+        justifyContent:'center',
+        width: "80%",
+        alignItems:'center',
+        flexDirection:"row",
+      },
+      trpohyAndWinContainer:{
+        flexDirection: "row",
+        justifyContent:"space-between",
+        alignItems:"center"
       }
 })
 export default WinModel

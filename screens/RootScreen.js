@@ -14,7 +14,6 @@ const RootScreen = () =>{
 const styles = StyleSheet.create({
     mainContainer:{
         flex:1,
-      
     }
 })
 export default RootScreen;
