@@ -18,21 +18,21 @@ const WinIndicatorStick = ({showWinStick}) =>{
                 style={[styles.horizontalLine, {width:fadeAnim.interpolate({inputRange:[0,100], outputRange:["0%", `${showWinStick==1? "100%": "0%"}`]})}]}
                 >
                     <Text>
-                        Hi there
+                        .
                     </Text>
                 </Animated.View>
                 <Animated.View 
                 style={[styles.horizontalLine, {width:fadeAnim.interpolate({inputRange:[0,100], outputRange:["0%", `${showWinStick==2? "100%": "0%"}`]})}]}
                 >
                     <Text>
-                        Hi there
+                        .
                     </Text>
                 </Animated.View>
                 <Animated.View 
                 style={[styles.horizontalLine, {width:fadeAnim.interpolate({inputRange:[0,100], outputRange:["0%", `${showWinStick==3? "100%": "0%"}`]})}]}
                 >
                     <Text>
-                        Hi there
+                        .
                     </Text>
                 </Animated.View>
             </View>)

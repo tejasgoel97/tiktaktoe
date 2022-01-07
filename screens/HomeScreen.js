@@ -31,7 +31,7 @@ const HomeScreen = ({ setCurrentScreen}) =>{
             </View>
             <Button color="red" onPress={()=> null} title='Play with Computer'/>
             <Button onPress={()=> setCurrentScreen("GameScreen")} title='Two Player'/>
-            <Text>@ Developed by Teja Games and Softwares</Text>
+            <Text>@ Developed by Deva Games and Softwares</Text>
         </View>
     )
 } 

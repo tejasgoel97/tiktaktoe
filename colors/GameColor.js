@@ -48,11 +48,21 @@ export const RED_COLOR="red"
 
 export const BACKGROUNG_COLOR = "#222831"
 export const STICK_COLOR = "black"
-export const OVAL_COLOR = "#C84B31"
+export const OVAL_COLOR = "#F0A500"
 export const CROSS_COLOR = "#2D4263"
-export const WIN_MODEL_BUTTON = "green"
+export const WIN_MODEL_BUTTON = "#CD1818"
 export const SCORE_COLOR = "#ECDBBA"
-export const WIN_STICK = "green"
+export const WIN_STICK = "#CD1818"
+
+
+// lite mode
+// export const BACKGROUNG_COLOR = "#BECA5C"
+// export const STICK_COLOR = "#000000"
+// export const OVAL_COLOR = "#90AACB"
+// export const CROSS_COLOR = "#FF5C58"
+// export const WIN_MODEL_BUTTON = "green"
+// export const SCORE_COLOR = "#ECDBBA"
+// export const WIN_STICK = "red"
 
 
 
