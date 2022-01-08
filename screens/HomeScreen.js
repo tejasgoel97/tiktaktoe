@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View, BackHandler, Image, Switch } from 'react-native'
+import { Button, StyleSheet, Text, View, BackHandler, Image, Switch , useWindowDimensions} from 'react-native'
 import React, { useEffect, useState } from 'react' 
 import { HOME_SCREEN_BACKGROUND } from '../colors/GameColor'
 const HomeScreen = ({ setCurrentScreen}) =>{
@@ -13,25 +13,21 @@ const HomeScreen = ({ setCurrentScreen}) =>{
             BackHandler.removeEventListener("hardwareBackPress", handleBackPress)
         }
     },[])
+    const {height, width} = useWindowDimensions();
+    const ImgHeight= (height/100)*60;
 
     return(
         <View style={styles.mainContainer}>
-            <View style={styles.switch}>
-                <Text style={styles.toggleText}>Dark Mode</Text>
-                <Switch
-                    trackColor={{ false: "#767577", true: "#81b0ff" }}
-                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                    ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}  
-                    value={isEnabled}
-                />
-            </View>
             <View style={styles.imageContainer}>
-                <Image source={require("../tiktaktoelogo.png")} height={100} width={100} resizeMode='center' style={styles.image}/>
+                <Image source={require("../tiktaktoelogo.png")}
+                 height={ImgHeight} 
+                 width={width} 
+                 resizeMode='contain' 
+                 style={{height:ImgHeight, width:width+100 }}/>
             </View>
-            <Button color="red" onPress={()=> null} title='Play with Computer'/>
-            <Button onPress={()=> setCurrentScreen("GameScreen")} title='Two Player'/>
-            <Text>@ Developed by Deva Games and Softwares</Text>
+            <Button color="red" onPress={()=> setCurrentScreen("ComputerPlayScreen")} title='Play with Computer'/>
+            <Button onPress={()=> setCurrentScreen("TwoPlayerScreen")} title='Two Player'/>
+            <Text style={{color:'#A9A9A9'}}>@ Developed by Teja Games and Softwares</Text>
         </View>
     )
 } 
@@ -43,8 +39,8 @@ const styles = StyleSheet.create({
         justifyContent:'space-evenly'
     },
     imageContainer:{
-        // backgroundColor:"green",
-        height:500
+        marginTop:40,
+        // backgroundColor:"yellow"
     },
     image:{
         height: 500,

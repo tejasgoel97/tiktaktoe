@@ -50,9 +50,9 @@ export const BACKGROUNG_COLOR = "#222831"
 export const STICK_COLOR = "black"
 export const OVAL_COLOR = "#F0A500"
 export const CROSS_COLOR = "#2D4263"
-export const WIN_MODEL_BUTTON = "#CD1818"
+export const WIN_MODEL_BUTTON = "#009f00"
 export const SCORE_COLOR = "#ECDBBA"
-export const WIN_STICK = "#CD1818"
+export const WIN_STICK = "#686868"
 
 
 // lite mode

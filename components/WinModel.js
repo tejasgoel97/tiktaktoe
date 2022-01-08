@@ -11,10 +11,23 @@ const WinModel = ({setShowModel, showModel, score, resetState}) =>{
   let Textt = "The Game is Draw";
   if(showModel==="p1") Textt = "Player 'O' Won"
   if(showModel==="p2") Textt = "Player 'X' Won"
-  let comp = <Text>The Game is Draw</Text>
-  if(showModel==="p2") comp =<IconEntypo name="cross" size={30} color={CROSS_COLOR} style={{}} />
+  let comp = <Text style={styles.modalText}>Oops!! Game is Draw</Text>
+  if(showModel==="p2") comp =(
+    <View style={styles.playerWon}>
+  <IconEntypo name="cross" size={30} color={CROSS_COLOR}  />
+  <Text style={styles.modalText}> WON</Text>
 
-  if(showModel==="p1") comp =  <IconFontAwsome name="circle-o" size={30} color={OVAL_COLOR} />;
+    </View>
+  )
+  if(showModel==="p1") comp =(
+    <View style={styles.playerWon}>
+<IconFontAwsome name="circle-o" size={30} color={OVAL_COLOR} />
+  <Text style={styles.modalText}> WON</Text>
+
+    </View>
+  )
+
+  // if(showModel==="p1") comp =  <IconFontAwsome name="circle-o" size={30} color={OVAL_COLOR} />;
     return(
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
@@ -22,7 +35,6 @@ const WinModel = ({setShowModel, showModel, score, resetState}) =>{
           <MaterialIcons name="emoji-events" color={WIN_MODEL_BUTTON} size={22}/>
           <View style={styles.playerWon}>
             {comp}
-            <Text style={styles.modalText}> WON</Text>
           </View>
           <MaterialIcons name="emoji-events" color={WIN_MODEL_BUTTON} size={22}/>
 
@@ -46,9 +58,9 @@ const WinModel = ({setShowModel, showModel, score, resetState}) =>{
 const styles = StyleSheet.create({
     centeredView: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-end",
         alignItems: "center",
-        marginTop: 522,
+        marginBottom:20 ,
       },
       modalView: {
         margin: 10,
@@ -85,7 +97,8 @@ const styles = StyleSheet.create({
       textStyle: {
         color: "white",
         fontWeight: "bold",
-        textAlign: "center"
+        textAlign: "center",
+        color:"black"
       },
       modalText: {
         // marginBottom: 15,
