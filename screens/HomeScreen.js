@@ -2,8 +2,6 @@ import { Button, StyleSheet, Text, View, BackHandler, Image, Switch , useWindowD
 import React, { useEffect, useState } from 'react' 
 import { HOME_SCREEN_BACKGROUND } from '../colors/GameColor'
 const HomeScreen = ({ setCurrentScreen}) =>{
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     useEffect(()=>{
         function handleBackPress(){
             setCurrentScreen("GameScreen")    
