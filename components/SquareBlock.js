@@ -1,8 +1,5 @@
 import React from "react";
-import { View, Text, TextComponent, StyleSheet,useWindowDimensions, Pressable, ImageBackground } from "react-native";
-import InnerCircle from "./InnerCircle"
-import CrossSign from "./CrossSign"
-import CrossSignTest from "./CrossSignTest"
+import { StyleSheet,useWindowDimensions, Pressable, ImageBackground } from "react-native";
 import CrossIcon from "./CrossIcon"
 import { BACKGROUNG_COLOR, BLOCK_COLOR, STICK_COLOR } from "../colors/GameColor";
 import CircleIcon from "./CircleIcon";
@@ -13,11 +10,9 @@ const SquareBlock = ({index, state,handlePlayerTurn,currentTurn})=>{
     const {height,width} = useWindowDimensions()
     const boxHeight = width*30/100
     let borderStyle={}
-    // console.log("data",showAnimation)
    
     let renderSign = null;
     if(stateValue==="p1"){
-        // renderSign=<InnerCircle />
         renderSign=<CircleIcon />
 
     }
@@ -38,7 +33,6 @@ const SquareBlock = ({index, state,handlePlayerTurn,currentTurn})=>{
 
     }
     function handleMove(){
-        // console.log(currentTurn)
         handlePlayerTurn(index, currentTurn)
     }
     

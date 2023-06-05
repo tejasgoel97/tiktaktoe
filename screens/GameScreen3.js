@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View,BackHandler, Alert, Vibration,Modal } from "react-native"
+import { Button, StyleSheet, View,BackHandler, Alert, Modal } from "react-native"
 import React ,{ useEffect, useState } from "react";
 import { BACKGROUNG_COLOR, STICK_COLOR } from "../colors/GameColor";
 import SquareBlock from "../components/SquareBlock";
@@ -22,7 +22,6 @@ const GameScreen = ({setCurrentScreen}) =>{
 
                   {
                     text: "No",
-                    // onPress: () => console.log("Cancel Pressed"),
                     style: {backgroundColor:'red'}
                   },
                 ]
@@ -66,12 +65,10 @@ const GameScreen = ({setCurrentScreen}) =>{
     useEffect(()=>{
         let isP2Winning = Player1Win(player2)
         let isP1Winning = Player1Win(player1);
-        // console.log(isP1Winning)
         if(isP1Winning) {
             setPlayerTurn("p1")
             setShowWinStick(isP1Winning)
             setTimeout(() => {
-                // setState([0,0,0,0,0,0,0,0,0])
                 setShowWinStick(false)
             }, 2000);
             setShowModel("p1")
@@ -83,7 +80,6 @@ const GameScreen = ({setCurrentScreen}) =>{
             setPlayerTurn("p2")
             setShowWinStick(isP2Winning)
             setTimeout(() => {
-                // setState([0,0,0,0,0,0,0,0,0])
                 setShowWinStick(false)
                 }, 2000);
             setShowModel('p2')
@@ -94,7 +90,6 @@ const GameScreen = ({setCurrentScreen}) =>{
         }
         else if(moves ===9) {
             setTimeout(() => {
-                // setState([0,0,0,0,0,0,0,0,0])
                 }, 2000);
             setShowModel('DRAW')
             
@@ -105,9 +100,7 @@ const GameScreen = ({setCurrentScreen}) =>{
         
 
     }, [state])
-    // console.log("Hi there")
-    // console.log(player1)
-    // console.log(player2)
+
 
 
     function handlePlayerTurn(blockIndex, playerName){

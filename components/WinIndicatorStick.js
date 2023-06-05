@@ -2,7 +2,6 @@ import { Animated, Easing, StyleSheet, Text, View } from 'react-native'
 import React, { useRef } from 'react' 
 import { WIN_STICK } from '../colors/GameColor';
 const WinIndicatorStick = ({showWinStick}) =>{
-    console.log("showIn",showWinStick)
     const fadeAnim = useRef(new Animated.Value(0)).current;
     Animated.timing(fadeAnim, {
         toValue: 100,

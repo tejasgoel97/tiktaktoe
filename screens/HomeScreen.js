@@ -1,5 +1,5 @@
-import { Button, StyleSheet, Text, View, BackHandler, Image, Switch , useWindowDimensions} from 'react-native'
-import React, { useEffect, useState } from 'react' 
+import { Button, StyleSheet, Text, View, BackHandler, Image, useWindowDimensions} from 'react-native'
+import React, { useEffect} from 'react' 
 import { HOME_SCREEN_BACKGROUND } from '../colors/GameColor'
 const HomeScreen = ({ setCurrentScreen}) =>{
     useEffect(()=>{

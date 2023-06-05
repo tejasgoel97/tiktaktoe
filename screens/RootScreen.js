@@ -1,6 +1,6 @@
-import { Button, StatusBar, StyleSheet, Text, View } from 'react-native'
+import {  StatusBar, StyleSheet, View } from 'react-native'
 import React from 'react' 
-import { useState } from 'react/cjs/react.development'
+import { useState } from 'react'
 import HomeScreen from './HomeScreen'
 import GameScreen from './GameScreen3'
 import { BACKGROUNG_COLOR, HOME_SCREEN_BACKGROUND } from '../colors/GameColor'
@@ -12,7 +12,7 @@ const RootScreen = () =>{
         <View style={styles.mainContainer}>
             <StatusBar hidden color={HOME_SCREEN_BACKGROUND} />
 
-            {currentScreen==="HomeScreen" ? <HomeScreen setCurrentScreen={setCurrentScreen}/> :currentScreen==="TwoPlayerScreen" ? <GameScreen setCurrentScreen={setCurrentScreen}/>: <ComputerPlayScreen setCurrentScreen={setCurrentScreen}/>}
+            {currentScreen==="HomeScreen" ? <HomeScreen setCurrentScreen={setCurrentScreen}/> :currentScreen==="TwoPlayerScreen" ? <GameScreen setCurrentScreen={setCurrentScreen}/>: currentScreen === "ComputerPlayScreen" ?  <ComputerPlayScreen setCurrentScreen={setCurrentScreen}/> : <HomeScreen setCurrentScreen={setCurrentScreen}/>}
         </View>
     )
 } 

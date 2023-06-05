@@ -6,43 +6,6 @@ import { BLOCK_COLOR } from '../colors/GameColor'
 const CrossSign = ({showAnimation}) =>{
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
-    // useEffect(()=>{
-    //     if(!showAnimation) {
-    //         Animated.loop(
-    //             Animated.sequence([
-    //               Animated.timing(fadeAnim, {
-    //                 toValue: 400,
-    //                 duration: 500,
-    //                 delay: 500,
-    //                 useNativeDriver:true
-    //               }),
-    //               Animated.timing(fadeAnim, {
-    //                 toValue: 0,
-    //                 duration: 500,
-    //                 useNativeDriver:true
-    //               }),
-                  
-    //             ]),
-    //             {
-    //               iterations: 4,
-                  
-    //             }
-    //           ).start()
-    //     }
-    //     // for(let i =0 ; i<10 ; i++){
-    //     //     Animated.timing(fadeAnim, {
-    //     //         toValue: 1,
-    //     //         duration: 500,
-    //     //         useNativeDriver: true,
-    //     //     }).start();
-    //     //     // Animated.timing(fadeAnim, {
-    //     //     //     toValue: 0,
-    //     //     //     duration: 5000,
-    //     //     //     useNativeDriver: true,
-    //     //     // }).start();
-    //     // }
-        
-    // }, [showAnimation])
 
     return (
     <View style={styles.mainContainer}>

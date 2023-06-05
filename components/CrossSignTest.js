@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import {Animated, StyleSheet, Text, View,Easing} from "react-native"
 import { BLOCK_COLOR, CROSS_COLOR } from '../colors/GameColor'
 
